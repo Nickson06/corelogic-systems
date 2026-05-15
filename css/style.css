@@ -1,6 +1,6 @@
 /* =========================================================
    CORELOGIC SYSTEMS LTD
-   ENTERPRISE PREMIUM CSS (MOBILE FIXED + POLISHED)
+   ENTERPRISE V3 UI POLISH (PRODUCTION READY)
 ========================================================= */
 
 /* =========================
@@ -23,7 +23,7 @@
 }
 
 /* =========================
-   GLOBAL RESET (MOBILE SAFE)
+   GLOBAL RESET
 ========================= */
 
 * {
@@ -75,37 +75,35 @@ p {
 }
 
 /* =========================================================
-   STICKY GLASS NAVBAR (FIXED MOBILE COLLAPSE)
+   FIXED APPLE-STYLE NAVBAR
 ========================================================= */
 
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 99999;
 
-  background: rgba(7, 17, 32, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(7, 17, 32, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: var(--transition);
+
+  transform: translateZ(0);
 }
 
 .navbar.scrolled {
   background: rgba(7, 17, 32, 0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 .navbar-brand img {
   width: 120px;
 }
 
-/* MOBILE NAV FIX */
-.navbar-collapse {
-  transition: all 0.3s ease;
-}
-
+/* NAV LINKS */
 .nav-link {
   color: #fff !important;
   font-weight: 500;
@@ -118,6 +116,7 @@ p {
   color: var(--accent-yellow) !important;
 }
 
+/* CTA BUTTON */
 .nav-btn {
   background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
   padding: 12px 28px;
@@ -132,15 +131,61 @@ p {
   box-shadow: 0 10px 25px rgba(30,136,255,0.3);
 }
 
+/* =========================
+   MOBILE NAV (SLIDE STYLE FIX)
+========================= */
+
+.navbar-collapse {
+  transition: all 0.25s ease;
+}
+
+.navbar-collapse.show {
+  display: block !important;
+}
+
+.navbar-collapse.collapsing {
+  height: auto !important;
+  transition: height 0.25s ease;
+}
+
+/* MOBILE DROPDOWN PANEL */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    right: 15px;
+
+    background: rgba(7, 17, 32, 0.98);
+    backdrop-filter: blur(18px);
+
+    border-radius: 18px;
+    padding: 20px;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .navbar-toggler {
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+}
+
 /* =========================================================
-   HERO (MOBILE FIXED)
+   HERO (PERFORMANCE + RESPONSIVE FIX)
 ========================================================= */
 
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 110px;
+  padding-top: 90px;
 
   background:
     radial-gradient(circle at top right, rgba(30,136,255,0.25), transparent 40%),
@@ -151,6 +196,7 @@ p {
   background-position: center;
 }
 
+/* HERO LIGHT GLOW */
 .hero::before {
   content: "";
   position: absolute;
@@ -163,9 +209,9 @@ p {
   filter: blur(60px);
 }
 
-/* =========================
-   FIX IMAGE OVERLAP ISSUES
-========================= */
+/* =========================================================
+   IMAGE SYSTEM FIX (NO OVERLAPS EVER)
+========================================================= */
 
 img {
   max-width: 100%;
@@ -173,12 +219,12 @@ img {
   display: block;
 }
 
-/* prevent flex overflow in rows */
-.row {
+/* safer bootstrap rows (NO GLOBAL BREAKING) */
+.row.align-center {
   align-items: center;
 }
 
-/* ABOUT IMAGE FIX */
+/* ABOUT IMAGE */
 .about-image {
   width: 100%;
   overflow: hidden;
@@ -191,15 +237,8 @@ img {
   object-fit: cover;
 }
 
-/* HERO SAFETY FIX */
-.hero img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* prevent column overlap on mobile */
+/* MOBILE STACKING */
 @media (max-width: 768px) {
-
   .row {
     flex-direction: column;
   }
@@ -210,7 +249,7 @@ img {
 }
 
 /* =========================================================
-   BUTTONS (TOUCH FRIENDLY)
+   BUTTON SYSTEM
 ========================================================= */
 
 .primary-btn,
@@ -229,8 +268,8 @@ img {
 }
 
 .primary-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(30,136,255,0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 35px rgba(30,136,255,0.35);
 }
 
 .secondary-btn {
@@ -247,37 +286,7 @@ img {
 }
 
 /* =========================================================
-   SECTIONS
-========================================================= */
-
-.about,
-.services,
-.stats,
-.cta,
-.contact-section {
-  padding: 90px 0;
-}
-
-/* =========================================================
-   SECTION TITLES (RESPONSIVE)
-========================================================= */
-
-.section-title {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.section-title h2 {
-  font-size: 2.6rem;
-}
-
-.section-title p {
-  max-width: 700px;
-  margin: auto;
-}
-
-/* =========================================================
-   CARDS
+   CARD SYSTEM (DEPTH UI)
 ========================================================= */
 
 .service-card {
@@ -290,39 +299,13 @@ img {
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.4);
   border-color: rgba(245,211,0,0.25);
 }
 
-.service-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
 /* =========================================================
-   INDUSTRY BOX
-========================================================= */
-
-.stat-box {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 18px;
-  transition: var(--transition);
-}
-
-.stat-box:hover {
-  transform: translateY(-6px);
-}
-
-/* =========================================================
-   CTA
+   CTA SECTION
 ========================================================= */
 
 .cta {
@@ -335,38 +318,7 @@ img {
 }
 
 /* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-  background: #040b16;
-  padding: 60px 0 25px;
-}
-
-footer h5 {
-  color: #fff;
-  margin-bottom: 18px;
-}
-
-footer p,
-footer li {
-  color: #94a3b8;
-}
-
-footer ul li {
-  margin-bottom: 10px;
-}
-
-footer a {
-  color: #cbd5e1;
-}
-
-footer a:hover {
-  color: var(--accent-yellow);
-}
-
-/* =========================================================
-   PARTNERS SLIDER (FIXED MOBILE OVERFLOW)
+   PARTNERS (TRUE INFINITE LOOP FIXED)
 ========================================================= */
 
 .footer-partners {
@@ -380,15 +332,14 @@ footer a:hover {
   display: flex;
   gap: 50px;
   width: max-content;
-  animation: scrollPartners 25s linear infinite;
-  align-items: center;
+  animation: scrollPartners 18s linear infinite;
   will-change: transform;
 }
 
 .partner-logo img {
   height: 45px;
   filter: grayscale(100%);
-  opacity: 0.7;
+  opacity: 0.75;
   transition: 0.3s ease;
 }
 
@@ -397,71 +348,65 @@ footer a:hover {
   opacity: 1;
 }
 
-/* FIXED LOOP */
 @keyframes scrollPartners {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 /* =========================================================
-   COPYRIGHT
+   FLOATING ACTION BUTTONS
 ========================================================= */
 
-.copyright {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 40px;
-  padding-top: 20px;
-  text-align: center;
+/* WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  z-index: 99999;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* Sticky CTA Button */
+.sticky-cta {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  z-index: 99999;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* =========================================================
-   MOBILE RESPONSIVE FIXES (CRITICAL)
+   RESPONSIVE FIXES
 ========================================================= */
 
-@media (max-width: 991px) {
-
-  .hero h1 {
-    font-size: 3rem;
-  }
-
-  .navbar-collapse {
-    background: rgba(9, 17, 31, 0.98);
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 10px;
-  }
-
-  .service-card {
-    margin-bottom: 20px;
-  }
-}
-
 @media (max-width: 768px) {
-
-  .hero {
-    text-align: center;
-  }
 
   .hero h1 {
     font-size: 2.2rem;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-  }
-
   .primary-btn,
   .secondary-btn {
     width: 100%;
-  }
-
-  .section-title h2 {
-    font-size: 2rem;
-  }
-
-  .partner-track {
-    gap: 30px;
   }
 
   .partner-logo img {
@@ -471,66 +416,19 @@ footer a:hover {
 
 @media (max-width: 576px) {
 
-  .hero h1 {
-    font-size: 1.9rem;
-  }
-
-  .about,
-  .services,
-  .stats,
-  .cta,
-  .contact-section {
-    padding: 60px 15px;
+  .hero {
+    padding-top: 80px;
   }
 
   .partner-logo img {
     height: 30px;
   }
 }
-/* =========================
-   FIX MOBILE NAVBAR VISIBILITY
-========================= */
 
-.navbar {
-  z-index: 99999 !important;
+/* =========================================================
+   SCROLL PERFORMANCE POLISH
+========================================================= */
+
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
-/* ensure toggler is visible */
-.navbar-toggler {
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.05);
-  z-index: 100000;
-}
-
-/* fix hamburger icon visibility */
-.navbar-toggler-icon {
-  filter: invert(1);
-}
-
-/* collapse menu always on top */
-.navbar-collapse {
-  z-index: 99999;
-}
-
-/* mobile dropdown visibility fix */
-@media (max-width: 991px) {
-  .navbar-collapse {
-    position: absolute;
-    top: 70px;
-    left: 15px;
-    right: 15px;
-
-    background: rgba(7, 17, 32, 0.98);
-    backdrop-filter: blur(15px);
-
-    border-radius: 16px;
-    padding: 20px;
-
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
-}
-
-
-
-
-
