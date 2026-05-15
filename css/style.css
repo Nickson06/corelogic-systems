@@ -163,6 +163,52 @@ p {
   filter: blur(60px);
 }
 
+/* =========================
+   FIX IMAGE OVERLAP ISSUES
+========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* prevent flex overflow in rows */
+.row {
+  align-items: center;
+}
+
+/* ABOUT IMAGE FIX */
+.about-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* HERO SAFETY FIX */
+.hero img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* prevent column overlap on mobile */
+@media (max-width: 768px) {
+
+  .row {
+    flex-direction: column;
+  }
+
+  .about-image {
+    margin-bottom: 20px;
+  }
+}
+
 /* =========================================================
    BUTTONS (TOUCH FRIENDLY)
 ========================================================= */
@@ -441,3 +487,50 @@ footer a:hover {
     height: 30px;
   }
 }
+/* =========================
+   FIX MOBILE NAVBAR VISIBILITY
+========================= */
+
+.navbar {
+  z-index: 99999 !important;
+}
+
+/* ensure toggler is visible */
+.navbar-toggler {
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  z-index: 100000;
+}
+
+/* fix hamburger icon visibility */
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* collapse menu always on top */
+.navbar-collapse {
+  z-index: 99999;
+}
+
+/* mobile dropdown visibility fix */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    right: 15px;
+
+    background: rgba(7, 17, 32, 0.98);
+    backdrop-filter: blur(15px);
+
+    border-radius: 16px;
+    padding: 20px;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+}
+
+
+
+
+
