@@ -1,6 +1,7 @@
 /* =========================================================
    CORELOGIC SYSTEMS LTD
-   ENTERPRISE PREMIUM CSS (MOBILE FIXED + POLISHED)
+   ENTERPRISE V6 — PIXEL PERFECT MOBILE SYSTEM
+   FULL MASTER CSS (READY TO PASTE)
 ========================================================= */
 
 /* =========================
@@ -8,6 +9,7 @@
 ========================= */
 
 :root {
+
   --primary-blue: #1e88ff;
   --secondary-blue: #0052cc;
   --accent-yellow: #f5d300;
@@ -17,32 +19,54 @@
   --card-bg: #101c2f;
 
   --white: #ffffff;
+  --text-light: #f8fafc;
   --text-muted: #cbd5e1;
 
   --transition: 0.4s ease;
 }
 
 /* =========================
-   GLOBAL RESET (MOBILE SAFE)
+   GLOBAL RESET
 ========================= */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-html, body {
+body {
   overflow-x: hidden;
   width: 100%;
-}
-
-body {
   font-family: 'Poppins', sans-serif;
   background: var(--dark-bg);
   color: var(--white);
   line-height: 1.7;
+
+  /* PERFORMANCE */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   PERFORMANCE BOOST (LCP)
+========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.hero,
+.cta {
+  background-attachment: scroll !important;
 }
 
 /* =========================
@@ -66,7 +90,12 @@ body {
    TYPOGRAPHY
 ========================= */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #fff;
 }
 
@@ -75,133 +104,325 @@ p {
 }
 
 /* =========================================================
-   STICKY GLASS NAVBAR (FIXED MOBILE COLLAPSE)
+   APPLE STYLE GLASS NAVBAR
 ========================================================= */
 
 .navbar {
+
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
 
-  background: rgba(7, 17, 32, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  z-index: 99999;
+
+  background: rgba(7, 17, 32, 0.72);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  transition: var(--transition);
+
+  transition:
+    background 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+  transform: translateZ(0);
 }
 
 .navbar.scrolled {
+
   background: rgba(7, 17, 32, 0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
 }
+
+/* LOGO */
 
 .navbar-brand img {
+
   width: 120px;
+
+  transition: 0.3s ease;
 }
 
-/* MOBILE NAV FIX */
-.navbar-collapse {
-  transition: all 0.3s ease;
-}
+/* NAV LINKS */
 
 .nav-link {
+
   color: #fff !important;
+
   font-weight: 500;
+
   margin: 0 10px;
+
   transition: 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
+
   color: var(--accent-yellow) !important;
 }
 
+/* NAV BUTTON */
+
 .nav-btn {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
+
   padding: 12px 28px;
+
   border-radius: 50px;
+
   color: white;
+
   font-weight: 600;
+
   transition: var(--transition);
 }
 
 .nav-btn:hover {
+
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(30,136,255,0.3);
+
+  box-shadow: 0 10px 25px rgba(30,136,255,0.35);
 }
 
 /* =========================================================
-   HERO (MOBILE FIXED)
+   MOBILE MENU (APP STYLE SLIDE)
+========================================================= */
+
+.navbar-toggler {
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.05);
+
+  padding: 8px 10px;
+}
+
+.navbar-toggler:focus {
+
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+
+  filter: invert(1);
+}
+
+/* MOBILE PANEL */
+
+@media (max-width: 991px) {
+
+  .navbar-collapse {
+
+    position: fixed;
+
+    top: 0;
+    right: -100%;
+
+    width: 82%;
+    max-width: 340px;
+
+    height: 100vh;
+
+    background: rgba(7, 17, 32, 0.98);
+
+    backdrop-filter: blur(20px);
+
+    padding: 100px 30px 40px;
+
+    transition: right 0.35s ease;
+
+    overflow-y: auto;
+
+    z-index: 999999;
+
+    box-shadow: -10px 0 35px rgba(0,0,0,0.4);
+  }
+
+  .navbar-collapse.show {
+
+    right: 0;
+  }
+
+  .navbar-nav {
+
+    gap: 10px;
+  }
+
+  .nav-link {
+
+    font-size: 1.05rem;
+
+    padding: 12px 0;
+  }
+
+  .nav-btn {
+
+    margin-top: 15px;
+
+    display: inline-block;
+
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   HERO SECTION
 ========================================================= */
 
 .hero {
+
   min-height: 100vh;
+
   display: flex;
+
   align-items: center;
-  padding-top: 110px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: 90px;
 
   background:
-    radial-gradient(circle at top right, rgba(30,136,255,0.25), transparent 40%),
+    radial-gradient(circle at top right, rgba(30,136,255,0.22), transparent 40%),
     radial-gradient(circle at bottom left, rgba(245,211,0,0.08), transparent 40%),
-    linear-gradient(rgba(5,10,20,0.9), rgba(5,10,20,0.95)),
-    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+    linear-gradient(rgba(5,10,20,0.9), rgba(5,10,20,0.96)),
+    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+
   background-size: cover;
   background-position: center;
 }
 
+/* GLOW EFFECT */
+
 .hero::before {
-  content: "";
+
+  content: '';
+
   position: absolute;
-  width: 450px;
-  height: 450px;
+
+  width: 420px;
+  height: 420px;
+
   background: rgba(30,136,255,0.12);
+
   border-radius: 50%;
-  top: -100px;
-  right: -100px;
+
+  top: -120px;
+  right: -120px;
+
   filter: blur(60px);
 }
 
+/* HERO CONTENT */
+
+.hero h1 {
+
+  font-size: 4.3rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+
+  color: var(--accent-yellow);
+}
+
+.hero p {
+
+  max-width: 700px;
+
+  margin-bottom: 35px;
+
+  color: #dbe4f0;
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+
+  display: flex;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
 /* =========================================================
-   BUTTONS (TOUCH FRIENDLY)
+   BUTTONS
 ========================================================= */
 
 .primary-btn,
 .secondary-btn {
+
   display: inline-block;
+
   text-align: center;
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  padding: 14px 32px;
-  border-radius: 50px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
+
   color: white;
+
+  padding: 14px 32px;
+
+  border-radius: 50px;
+
   font-weight: 600;
+
   transition: var(--transition);
 }
 
 .primary-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(30,136,255,0.35);
+
+  transform: translateY(-5px);
+
+  color: white;
+
+  box-shadow: 0 15px 35px rgba(30,136,255,0.35);
 }
 
 .secondary-btn {
+
   border: 2px solid var(--accent-yellow);
+
   color: var(--accent-yellow);
+
   padding: 14px 32px;
+
   border-radius: 50px;
+
   transition: var(--transition);
 }
 
 .secondary-btn:hover {
+
   background: var(--accent-yellow);
-  color: black;
+
+  color: #000;
 }
 
 /* =========================================================
-   SECTIONS
+   SECTION SPACING
 ========================================================= */
 
 .about,
@@ -209,70 +430,142 @@ p {
 .stats,
 .cta,
 .contact-section {
+
   padding: 90px 0;
 }
 
 /* =========================================================
-   SECTION TITLES (RESPONSIVE)
+   SECTION TITLES
 ========================================================= */
 
 .section-title {
+
   text-align: center;
+
   margin-bottom: 50px;
 }
 
 .section-title h2 {
-  font-size: 2.6rem;
+
+  font-size: 2.7rem;
+
+  font-weight: 700;
+
+  margin-bottom: 15px;
 }
 
 .section-title p {
-  max-width: 700px;
+
+  max-width: 720px;
+
   margin: auto;
 }
 
 /* =========================================================
-   CARDS
+   ABOUT
 ========================================================= */
 
-.service-card {
-  background: var(--card-bg);
-  border-radius: 22px;
-  padding: 35px;
-  transition: var(--transition);
-  border: 1px solid rgba(255,255,255,0.05);
-  height: 100%;
+.about {
+
+  background: var(--dark-secondary);
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(245,211,0,0.25);
+.about-image {
+
+  overflow: hidden;
+
+  border-radius: 24px;
 }
 
-.service-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  margin-bottom: 20px;
-  font-size: 24px;
+.about-image img {
+
+  width: 100%;
+
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+
+  transform: scale(1.03);
 }
 
 /* =========================================================
-   INDUSTRY BOX
+   SERVICE CARDS
+========================================================= */
+
+.service-card {
+
+  background: var(--card-bg);
+
+  border-radius: 24px;
+
+  padding: 35px;
+
+  height: 100%;
+
+  transition: var(--transition);
+
+  border: 1px solid rgba(255,255,255,0.05);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* HOVER DEPTH */
+
+.service-card:hover {
+
+  transform: translateY(-12px);
+
+  border-color: rgba(245,211,0,0.25);
+
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+}
+
+/* CARD GLOW */
+
+.service-card::before {
+
+  content: '';
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  background: rgba(30,136,255,0.08);
+
+  border-radius: 50%;
+
+  top: -50px;
+  right: -50px;
+}
+
+/* =========================================================
+   INDUSTRIES
 ========================================================= */
 
 .stat-box {
+
   background: var(--card-bg);
-  padding: 30px;
-  border-radius: 18px;
+
+  border-radius: 20px;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
   transition: var(--transition);
+
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .stat-box:hover {
-  transform: translateY(-6px);
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 /* =========================================================
@@ -280,11 +573,14 @@ p {
 ========================================================= */
 
 .cta {
+
   background:
-    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
-    url('https://images.unsplash.com/photo-1552664730-d307ca884978');
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+    url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop');
+
   background-size: cover;
   background-position: center;
+
   text-align: center;
 }
 
@@ -293,68 +589,191 @@ p {
 ========================================================= */
 
 footer {
+
   background: #040b16;
-  padding: 60px 0 25px;
+
+  padding: 70px 0 110px;
 }
 
 footer h5 {
-  color: #fff;
-  margin-bottom: 18px;
-}
 
-footer p,
-footer li {
-  color: #94a3b8;
-}
+  margin-bottom: 20px;
 
-footer ul li {
-  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 footer a {
+
   color: #cbd5e1;
+
+  transition: 0.3s ease;
 }
 
 footer a:hover {
+
   color: var(--accent-yellow);
 }
 
 /* =========================================================
-   PARTNERS SLIDER (FIXED MOBILE OVERFLOW)
+   PARTNERS SLIDER
 ========================================================= */
 
 .footer-partners {
-  margin-top: 40px;
-  padding-top: 25px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+
+  margin-top: 50px;
+
   overflow: hidden;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  padding-top: 30px;
 }
 
 .partner-track {
+
   display: flex;
-  gap: 50px;
+
+  gap: 55px;
+
   width: max-content;
-  animation: scrollPartners 25s linear infinite;
+
+  animation: scrollPartners 20s linear infinite;
+
   align-items: center;
+
   will-change: transform;
 }
 
 .partner-logo img {
+
   height: 45px;
+
+  opacity: 0.75;
+
   filter: grayscale(100%);
-  opacity: 0.7;
+
   transition: 0.3s ease;
 }
 
 .partner-logo img:hover {
-  filter: grayscale(0%);
+
+  filter: grayscale(0);
+
   opacity: 1;
 }
 
-/* FIXED LOOP */
 @keyframes scrollPartners {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
+
+.whatsapp-float {
+
+  position: fixed;
+
+  bottom: 90px;
+  right: 18px;
+
+  width: 58px;
+  height: 58px;
+
+  background: #25D366;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 28px;
+
+  z-index: 999999;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+
+  transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   STICKY MOBILE BOTTOM BAR
+========================================================= */
+
+.mobile-bottom-bar {
+
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  background: rgba(7,17,32,0.96);
+
+  backdrop-filter: blur(15px);
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  z-index: 999999;
+
+  display: none;
+
+  padding: 10px 0;
+}
+
+.mobile-bottom-bar .bottom-nav {
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+}
+
+.mobile-bottom-bar a {
+
+  color: white;
+
+  text-decoration: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  font-size: 0.75rem;
+
+  gap: 5px;
+
+  transition: 0.3s ease;
+}
+
+.mobile-bottom-bar a i {
+
+  font-size: 1.2rem;
+}
+
+.mobile-bottom-bar a:hover {
+
+  color: var(--accent-yellow);
 }
 
 /* =========================================================
@@ -362,71 +781,82 @@ footer a:hover {
 ========================================================= */
 
 .copyright {
+
   border-top: 1px solid rgba(255,255,255,0.08);
+
   margin-top: 40px;
+
   padding-top: 20px;
+
   text-align: center;
 }
 
 /* =========================================================
-   MOBILE RESPONSIVE FIXES (CRITICAL)
+   AOS MICRO INTERACTIONS
 ========================================================= */
+
+[data-aos] {
+
+  transition-timing-function:
+    cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   RESPONSIVE SYSTEM
+========================================================= */
+
+/* LARGE TABLETS */
 
 @media (max-width: 991px) {
 
   .hero h1 {
+
     font-size: 3rem;
   }
 
-  .navbar-collapse {
-    background: rgba(9, 17, 31, 0.98);
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 10px;
+  .section-title h2 {
+
+    font-size: 2.2rem;
   }
 
   .service-card {
+
     margin-bottom: 20px;
   }
 }
 
+/* MOBILE */
+
 @media (max-width: 768px) {
 
   .hero {
+
     text-align: center;
+
+    padding-top: 80px;
   }
 
   .hero h1 {
-    font-size: 2.2rem;
+
+    font-size: 2.3rem;
   }
 
   .hero-buttons {
+
     flex-direction: column;
-    gap: 12px;
+
+    width: 100%;
   }
 
   .primary-btn,
   .secondary-btn {
+
     width: 100%;
   }
 
   .section-title h2 {
+
     font-size: 2rem;
-  }
-
-  .partner-track {
-    gap: 30px;
-  }
-
-  .partner-logo img {
-    height: 35px;
-  }
-}
-
-@media (max-width: 576px) {
-
-  .hero h1 {
-    font-size: 1.9rem;
   }
 
   .about,
@@ -434,52 +864,94 @@ footer a:hover {
   .stats,
   .cta,
   .contact-section {
-    padding: 60px 15px;
+
+    padding: 65px 0;
+  }
+
+  .partner-track {
+
+    gap: 35px;
   }
 
   .partner-logo img {
-    height: 30px;
+
+    height: 34px;
+  }
+
+  /* SHOW MOBILE BOTTOM BAR */
+
+  .mobile-bottom-bar {
+
+    display: block;
+  }
+
+  footer {
+
+    padding-bottom: 130px;
   }
 }
-/* =========================
-   FIX MOBILE NAVBAR VISIBILITY
-========================= */
 
-.navbar {
-  z-index: 99999 !important;
+/* IPHONE SE + ULTRA SMALL DEVICES */
+
+@media (max-width: 375px) {
+
+  .hero h1 {
+
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+
+    font-size: 0.92rem;
+  }
+
+  .section-title h2 {
+
+    font-size: 1.7rem;
+  }
+
+  .service-card {
+
+    padding: 28px 22px;
+  }
+
+  .navbar-brand img {
+
+    width: 100px;
+  }
+
+  .partner-logo img {
+
+    height: 28px;
+  }
+
+  .mobile-bottom-bar a {
+
+    font-size: 0.68rem;
+  }
 }
 
-/* ensure toggler is visible */
-.navbar-toggler {
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.05);
-  z-index: 100000;
-}
+/* ULTRA SMALL ANDROID */
 
-/* fix hamburger icon visibility */
-.navbar-toggler-icon {
-  filter: invert(1);
-}
+@media (max-width: 320px) {
 
-/* collapse menu always on top */
-.navbar-collapse {
-  z-index: 99999;
-}
+  .hero h1 {
 
-/* mobile dropdown visibility fix */
-@media (max-width: 991px) {
-  .navbar-collapse {
-    position: absolute;
-    top: 70px;
-    left: 15px;
-    right: 15px;
+    font-size: 1.7rem;
+  }
 
-    background: rgba(7, 17, 32, 0.98);
-    backdrop-filter: blur(15px);
+  .nav-btn {
 
-    border-radius: 16px;
-    padding: 20px;
+    padding: 10px 20px;
+  }
 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  .service-card {
+
+    padding: 24px 18px;
+  }
+
+  .mobile-bottom-bar a i {
+
+    font-size: 1rem;
   }
 }
