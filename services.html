@@ -2,342 +2,368 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solutions | Corelogic Systems Ltd</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Corelogic Systems </title>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+:root{
+  --bg:#070f1c;
+  --panel:#0e1b2e;
+  --card:#111f35;
+  --text:#eaf2ff;
+  --muted:#a9b7d0;
+  --primary:#1e88ff;
+  --primary2:#0052cc;
+}
 
-  <style>
+/* ================= GLOBAL ================= */
+body{
+  margin:0;
+  font-family:Poppins;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #071120;
-      color: #fff;
-      overflow-x: hidden;
-    }
+/* ================= SIDEBAR ================= */
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  width:260px;
+  height:100vh;
+  background:var(--panel);
+  padding:20px;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
 
-    /* =========================
-       HERO HEADER
-    ========================== */
+.sidebar h3{
+  font-size:18px;
+  margin-bottom:20px;
+  color:var(--primary);
+}
 
-    .services-hero {
-      padding: 120px 0 80px;
-      text-align: center;
-      background:
-        radial-gradient(circle at top, rgba(30,136,255,0.25), transparent 40%),
-        radial-gradient(circle at bottom, rgba(245,211,0,0.08), transparent 40%),
-        #071120;
-    }
+.nav-item{
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.3s;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+}
 
-    .services-hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-    }
+.nav-item:hover,
+.nav-item.active{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+}
 
-    .services-hero p {
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 15px auto 0;
-    }
+/* ================= CONTENT ================= */
+.content{
+  margin-left:260px;
+  padding:30px;
+}
 
-    /* =========================
-       SERVICE CARDS
-    ========================== */
+.section{ display:none; }
+.section.active{ display:block; }
 
-    .service-card {
-      background: #101c2f;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 22px;
-      padding: 35px;
-      height: 100%;
-      transition: 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
+/* ================= CARD ================= */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:25px;
+  margin-top:20px;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--text);
+}
 
-    .service-card::before {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: rgba(30,136,255,0.12);
-      border-radius: 50%;
-      top: -40px;
-      right: -40px;
-      filter: blur(20px);
-    }
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+}
 
-    .service-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(245,211,0,0.25);
-    }
+.icon{
+  width:50px;
+  height:50px;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  margin-bottom:10px;
+  color:white;
+}
 
-    .service-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #1e88ff, #0052cc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+img{
+  width:100%;
+  border-radius:12px;
+  margin-top:10px;
+}
 
-    .service-card h4 {
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
+/* ================= READ MORE ================= */
+.read-more-content{
+  display:none;
+  margin-top:10px;
+  color:var(--muted);
+}
 
-    .service-card p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+.read-btn{
+  margin-top:10px;
+  background:transparent;
+  border:1px solid var(--primary);
+  color:var(--primary);
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.3s;
+}
 
-    .primary-btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 22px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #1e88ff, #0052cc);
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
+.read-btn:hover{
+  background:var(--primary);
+  color:white;
+}
 
-    .primary-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(30,136,255,0.3);
-      color: white;
-    }
+/* ================= MOBILE ================= */
+.mobile-header{
+  display:none;
+  background:var(--panel);
+  padding:15px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
 
-    /* =========================
-       SECTION TITLE
-    ========================== */
+.menu-btn{
+  position:absolute;
+  left:15px;
+  top:15px;
+  background:var(--primary);
+  border:none;
+  color:#fff;
+  padding:8px 12px;
+  border-radius:8px;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
+@media(max-width:768px){
 
-    .section-title h2 {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
+.sidebar{
+  transform:translateX(-100%);
+  transition:.3s;
+  position:fixed;
+  z-index:999;
+}
 
-    .section-title p {
-      color: #94a3b8;
-      max-width: 700px;
-      margin: auto;
-    }
+.sidebar.open{
+  transform:translateX(0);
+}
 
-    /* =========================
-       PROCESS SECTION
-    ========================== */
+.content{
+  margin-left:0;
+  padding:15px;
+}
 
-    .process {
-      background: #0b1728;
-      padding: 80px 0;
-      margin-top: 80px;
-    }
+.mobile-header{
+  display:block;
+}
 
-    .process-box {
-      background: #101c2f;
-      border-radius: 18px;
-      padding: 30px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s ease;
-    }
+}
 
-    .process-box:hover {
-      transform: translateY(-6px);
-    }
-
-    .process-box h5 {
-      margin-top: 15px;
-      font-weight: 700;
-    }
-
-    .process-box p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta {
-      text-align: center;
-      padding: 80px 20px;
-      background:
-        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-        url('https://images.unsplash.com/photo-1552664730-d307ca884978');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .cta h2 {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
-
-    .cta p {
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 15px auto;
-    }
-
-  </style>
-
+</style>
 </head>
 
 <body>
 
-<!-- =========================
-     HERO
-========================== -->
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  OUR SOLUTIONS
+</div>
 
-<section class="services-hero">
-  <div class="container" data-aos="fade-up">
-    <h1>Our Solutions</h1>
-    <p>End-to-end ICT ecosystems designed to power secure, scalable and intelligent enterprises.</p>
-  </div>
-</section>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
 
-<!-- =========================
-     SERVICES GRID
-========================== -->
+<h3>Corelogic SaaS V5</h3>
 
-<section class="container">
+<div class="nav-item active" onclick="showSection(event,'infra')">
+<i class="fa fa-network-wired"></i> IT Infrastructure
+</div>
 
-  <div class="section-title" data-aos="fade-up">
-    <h2>What We Offer</h2>
-    <p>Comprehensive ICT solutions across infrastructure, security, automation and digital transformation.</p>
-  </div>
+<div class="nav-item" onclick="showSection(event,'apps')">
+<i class="fa fa-cogs"></i> Business Apps
+</div>
 
-  <div class="row g-4">
+<div class="nav-item" onclick="showSection(event,'security')">
+<i class="fa fa-shield-halved"></i> Cyber Security
+</div>
 
-    <div class="col-lg-6" data-aos="zoom-in">
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
-        <h4>IT Infrastructure & Networking</h4>
-        <p>Design, deployment and management of enterprise-grade ICT infrastructure and secure networks.</p>
-        <a href="#" class="primary-btn">Learn More</a>
-      </div>
-    </div>
+<div class="nav-item" onclick="showSection(event,'banking')">
+<i class="fa fa-bank"></i> Banking Products
+</div>
 
-    <div class="col-lg-6" data-aos="zoom-in">
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4>Cybersecurity Solutions</h4>
-        <p>Advanced protection systems including firewalls, endpoint security and threat monitoring.</p>
-        <a href="#" class="primary-btn">Learn More</a>
-      </div>
-    </div>
+<div class="nav-item" onclick="showSection(event,'edms')">
+<i class="fa fa-folder-open"></i> EDMS
+</div>
 
-    <div class="col-lg-6" data-aos="zoom-in">
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-folder-open"></i></div>
-        <h4>EDMS & Document Management</h4>
-        <p>Digital transformation through secure document workflows and enterprise content systems.</p>
-        <a href="#" class="primary-btn">Learn More</a>
-      </div>
-    </div>
+</div>
 
-    <div class="col-lg-6" data-aos="zoom-in">
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-cogs"></i></div>
-        <h4>Business Applications & Automation</h4>
-        <p>Custom software systems and automation tools for modern business operations.</p>
-        <a href="#" class="primary-btn">Learn More</a>
-      </div>
-    </div>
+<!-- CONTENT -->
+<div class="content">
 
-  </div>
+<!-- INFRA -->
+<div id="infra" class="section active">
+<h2>IT Infrastructure</h2>
 
-</section>
+<div class="card">
+<div class="icon"><i class="fa fa-network-wired"></i></div>
 
-<!-- =========================
-     DELIVERY PROCESS
-========================== -->
+<p>Modern businesses require reliable IT infrastructure for scalability and security.</p>
 
-<section class="process">
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31">
 
-  <div class="container">
+<div class="read-more-content">
+<p>
+Modern businesses require reliable, scalable, and secure IT infrastructure to support daily operations, communication, and digital transformation. We provide end-to-end IT infrastructure solutions including enterprise servers, computers, storage systems, LAN setup, structured cabling, wireless networking, CCTV surveillance systems, and data center solutions tailored for organizations of all sizes.
+</p>
+<p>Our infrastructure services are designed to improve operational efficiency, minimize downtime, enhance network performance, and strengthen business continuity. From office network deployment and server virtualization to intelligent surveillance and enterprise connectivity, we help businesses build future-ready technology environments that support growth and productivity.
+</p>
+<p>We deploy industry-leading technologies from globally recognized OEMs to ensure performance, security, and reliability across your infrastructure ecosystem. Whether you are setting up a new office, upgrading your network, or modernizing your data center, we deliver customized solutions aligned with your business goals.</p>
+</div>
 
-    <div class="section-title" data-aos="fade-up">
-      <h2>How We Deliver</h2>
-      <p>A structured approach to ensure quality, security and performance.</p>
-    </div>
+<button class="read-btn" onclick="toggleReadMore(this)">Read More</button>
+</div>
+</div>
 
-    <div class="row g-4">
+<!-- APPS -->
+<div id="apps" class="section">
+<h2>Business Applications</h2>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="process-box">
-          <i class="fa-solid fa-comments fa-2x"></i>
-          <h5>Consultation</h5>
-          <p>Understanding client requirements and environment.</p>
-        </div>
-      </div>
+<div class="card">
+<div class="icon"><i class="fa fa-cogs"></i></div>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="process-box">
-          <i class="fa-solid fa-diagram-project fa-2x"></i>
-          <h5>Design & Implementation</h5>
-          <p>Building tailored ICT architecture and deployment.</p>
-        </div>
-      </div>
+<p>ERP, CRM, HR and accounting systems for automation.</p>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="process-box">
-          <i class="fa-solid fa-headset fa-2x"></i>
-          <h5>Support & Maintenance</h5>
-          <p>Continuous monitoring, optimization and support.</p>
-        </div>
-      </div>
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
 
-    </div>
+<div class="read-more-content">
+<p>
+Digital transformation starts with intelligent business applications that streamline operations, improve visibility, and enhance decision-making. We provide powerful business software solutions including ERP systems, CRM platforms, HR management systems, accounting software, workflow automation tools, and customized enterprise applications designed to optimize organizational performance.
+</p>
+<p>Our business applications help organizations automate processes, improve collaboration, increase efficiency, and gain real-time business insights. Whether you need customer relationship management, enterprise resource planning, inventory management, finance automation, or project management systems, we deliver scalable solutions tailored to your operational requirements.</p>
+<P>We work with modern enterprise platforms that support integration, cloud accessibility, mobility, and data-driven decision-making. Our goal is to help businesses eliminate manual processes, improve customer experience, and achieve operational excellence through intelligent software solutions.</P>
+</div>
 
-  </div>
+<button class="read-btn" onclick="toggleReadMore(this)">Read More</button>
+</div>
+</div>
 
-</section>
+<!-- SECURITY -->
+<div id="security" class="section">
+<h2>Cyber Security</h2>
 
-<!-- =========================
-     CTA
-========================== -->
+<div class="card">
+<div class="icon"><i class="fa fa-shield-halved"></i></div>
 
-<section class="cta">
-  <div class="container" data-aos="zoom-in">
-    <h2>Let’s Build Secure & Scalable Systems Together</h2>
-    <p>Partner with Corelogic Systems Ltd for enterprise-grade ICT solutions tailored to your business.</p>
-    <a href="contact.html" class="primary-btn">Get in Touch</a>
-  </div>
-</section>
+<p>Advanced protection against cyber threats.</p>
 
-<!-- =========================
-     SCRIPTS
-========================== -->
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<div class="read-more-content">
+<p>
+Cyber threats continue to evolve, making cybersecurity a critical requirement for every organization. We provide advanced cybersecurity solutions that protect businesses against ransomware, malware, phishing attacks, unauthorized access, and data breaches.
+</p>
+<p>Our cybersecurity portfolio includes next-generation firewalls, endpoint protection, email security, VPN solutions, identity and access management, network monitoring, threat detection, vulnerability assessments, and security awareness solutions. We help organizations secure users, devices, networks, applications, and sensitive business data across both on-premise and cloud environments.</p>
+<p>We partner with leading cybersecurity vendors to deliver enterprise-grade protection, proactive threat management, and regulatory compliance support. Our solutions are designed to strengthen your security posture while ensuring business continuity and operational resilience.</p>
+</div>
+
+<button class="read-btn" onclick="toggleReadMore(this)">Read More</button>
+</div>
+</div>
+
+<!-- BANKING -->
+<div id="banking" class="section">
+<h2>Banking Products</h2>
+
+<div class="card">
+<div class="icon"><i class="fa fa-bank"></i></div>
+
+<p>Banking automation and financial hardware systems.</p>
+
+<img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc">
+
+<div class="read-more-content">
+<p>
+We provide reliable banking and financial technology solutions designed to improve operational efficiency, transaction accuracy, and customer service delivery within financial institutions and cash-intensive businesses.
+</p>
+<p>Our banking product portfolio includes note counters, counterfeit detection machines, cash deposit systems, currency sorting machines, card printers, cheque scanners, and secure financial processing equipment. These solutions help organizations automate cash handling processes, reduce fraud risks, improve accuracy, and enhance operational speed.</p>
+<P>We work with trusted global manufacturers to deliver high-performance banking equipment suitable for banks, SACCOs, retail businesses, forex bureaus, supermarkets, and financial institutions. Our solutions are designed for durability, precision, security, and seamless integration into modern banking environments.</P>
+</div>
+
+<button class="read-btn" onclick="toggleReadMore(this)">Read More</button>
+</div>
+</div>
+
+<!-- EDMS -->
+<div id="edms" class="section">
+<h2>EDMS & Workflow Automation</h2>
+
+<div class="card">
+<div class="icon"><i class="fa fa-folder-open"></i></div>
+
+<p>Digital document management systems for modern offices.</p>
+
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40">
+
+<div class="read-more-content">
+<p>Efficient document management is essential for modern organizations seeking improved productivity, compliance, and digital transformation. Our Enterprise Document Management Solutions (EDMS) help businesses digitize, organize, secure, and automate document-driven processes.
+</p>
+<p>We provide intelligent solutions for document scanning, digitization, workflow automation, records management, secure archiving, OCR data extraction, electronic approvals, and paperless office transformation. Our EDMS solutions improve accessibility, reduce paperwork, enhance collaboration, and streamline business operations.</p>
+<P>By automating workflows and centralizing document management, organizations can improve efficiency, strengthen compliance, accelerate approvals, and reduce operational costs. We help businesses transition from manual document handling to secure and intelligent digital ecosystems.</P>
+</div>
+
+<button class="read-btn" onclick="toggleReadMore(this)">Read More</button>
+</div>
+</div>
+
+</div>
 
 <script>
-  AOS.init({ duration: 1000, once: true });
+
+function showSection(event,id){
+
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+event.currentTarget.classList.add("active");
+
+if(window.innerWidth < 768){
+document.getElementById("sidebar").classList.remove("open");
+}
+}
+
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("open");
+}
+
+function toggleReadMore(btn){
+const content = btn.previousElementSibling;
+if(content.style.display === "block"){
+content.style.display = "none";
+btn.innerText = "Read More";
+}else{
+content.style.display = "block";
+btn.innerText = "Read Less";
+}
+}
+
 </script>
 
 </body>
